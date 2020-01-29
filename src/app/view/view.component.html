@@ -1,0 +1,11 @@
+<div>
+    <div *ngFor="let item of userInfo">
+        <ol>
+            <p>DataNUmber:{{item.id}}</p>
+            <p>Name:{{item.name}}</p>
+            <p>Username:{{item.username}}</p>
+            <p>Email:{{item.email}}</p>
+        </ol>
+    </div>
+</div>
+<button routerLink="/dashboard">BackToDashboard</button>

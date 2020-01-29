@@ -1,0 +1,45 @@
+
+<div class="topnav">
+    <a class="active" routerLink="/">Home</a>
+    <a>News</a>
+    <a >Contact</a>
+    <a class="active" routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/logout">ErrorPage</a>
+  </div>
+  
+    <div class="outercont">
+        <div class="template-driven">
+            <h2 class="head">RegistrationForm</h2>
+            <div class="cont">
+                <form (submit)="onPost(sampleForm)" #sampleForm="ngForm">
+                <label>Name:</label><input name="name" [(ngModel)]="ngname" required #name="ngModel" />
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert danger">
+                    <div *ngIf="name.errors.required">
+                      <p>FirstName is required!</p>
+                    </div>
+                </div><br><br>
+                <label>Username:</label><input name="username" [(ngModel)]="ngusername" required #username="ngModel" />
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert danger">
+                    <div *ngIf="username.errors.required">
+                        <p>UserName is required!</p>
+                    </div>
+                </div><br><br>
+
+                <label>Email:</label><input name="email" [(ngModel)]="ngemail" required email="true" #email="ngModel" />
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+                    <div *ngIf="email.errors.required">
+                        <p>Email is required!</p>
+                    </div>
+                    <div *ngIf="email.errors?.email"> 
+                         <p>Email is invalid!</p>
+                     </div>
+                </div>
+                <br><br>
+               
+             <button [disabled]="!sampleForm.form.valid" class="submit">Submit</button>
+            </form>
+            <button (click)="onClear()" class="clearbtn">clear</button>
+         </div>
+     </div>
+ </div>
+<app-child-template-register-app  (edit)="editInfo($event)" [registered]="regInfos"></app-child-template-register-app>

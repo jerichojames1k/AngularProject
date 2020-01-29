@@ -1,0 +1,21 @@
+
+<p class="hr"></p>
+<div class="outercont">
+      <table>
+        <tr>
+          <th>No.</th>
+          <th>Name</th>
+          <th>UserName</th>
+          <th>Email</th>
+          <th>Edit</th>
+        </tr>
+        <tr *ngFor="let info of registered; let i = index">
+          <td>{{info.id}}</td>
+          <td>{{info.name}}</td>
+          <td>{{info.username}}</td>
+          <td>{{info.email}}</td>
+          <td><a [routerLink]="['/view', info.id]"><button class="viewbtn">view</button></a>
+            <button (click)="onDelete(i)" class="btndelete">Delete</button><button (click)="onEdit(info)" id="btnupdate">Update</button></td>
+        </tr>
+    </table>
+</div>

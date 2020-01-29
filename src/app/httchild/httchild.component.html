@@ -1,0 +1,29 @@
+
+
+<p class="hr"></p>
+<div class="outercont">
+      <table>
+        <tr>
+          <th>No.</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Gender</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Edit</th>
+        </tr>
+        <tr *ngFor="let info of registered; let i = index ">
+          <td>{{i + 1}}</td>
+          <td>{{info.firstname}}</td>
+          <td>{{info.lastname}}</td>
+          <td>{{info.gender}}</td>
+          <td>{{info.age}}</td>
+          <td>{{info.street}}</td>
+          <td>{{info.email}}</td>
+          <td>{{info.password}}</td>
+          <td><button (click)="onDelete()" class="btndelete">Delete</button><button (click)="onEdit(info,i)" id="btnupdate">Update</button></td>
+        </tr>
+    </table>
+</div>

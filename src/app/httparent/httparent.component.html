@@ -1,0 +1,81 @@
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+  
+    <div class="outercont">
+        <div class="template-driven">
+            <h2 class="head">RegistrationForm</h2>
+            <div class="cont">
+                <form (submit)="onTemplate(sampleForm)" #sampleForm="ngForm">
+                <label>FirstName:</label><input name="firstname" [(ngModel)]="ngfirstname" required #firstname="ngModel" />
+                <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert danger">
+                    <div *ngIf="firstname.errors.required">
+                      <p>FirstName is required!</p>
+                    </div>
+                </div><br><br>
+                <label>LastName:</label><input name="lastname" [(ngModel)]="nglastname" required #lastname="ngModel" />
+                <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert alert danger">
+                    <div *ngIf="lastname.errors.required">
+                        <p>LastName is required!</p>
+                    </div>
+                </div><br><br>
+                <label>Age:</label>
+                <input name="age" type="number" [(ngModel)]="ngage" [min]="0" required #age="ngModel">
+                <div *ngIf="age.invalid && (age.dirty || age.touched)"> 
+                    <div *ngIf="age.errors.required"> 
+                        <p>Age is required!</p>
+                    </div>	
+         
+                </div>
+                <br><br>
+                <label>Address:</label><input name="street" [(ngModel)]="ngstreet" required #street="ngModel" />
+                <div *ngIf="street.invalid && (street.dirty || street.touched)" class="alert alert danger">
+                    <div *ngIf="street.errors.required">
+                       <p> Address is required!</p>
+                    </div>
+                </div><br><br>
+
+                <label>Gender: </label>
+                    <select name="gender" [(ngModel)]="nggender" required #gender="ngModel" ngModel>
+                        <option value="Female" > Female</option>
+                        <option value="Male" >Male</option>
+                    </select><br><br>
+
+                <div *ngIf="gender.invalid && (gender.dirty || gender.touched)" class="alert alert danger">
+                    <div *ngIf="gender.errors.required">
+                        <p>Gender is required!</p>
+                    </div>
+                </div>
+
+                <label>Email:</label><input name="email" [(ngModel)]="ngemail" required email="true" #email="ngModel" />
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" >
+                    <div *ngIf="email.errors.required">
+                        <p>Email is required!</p>
+                    </div>
+                    <div *ngIf="email.errors?.email"> 
+                         <p>Email is invalid!</p>
+                     </div>
+                </div>
+                <br><br>
+               <label>Password:</label><input name="password" type="password" [(ngModel)]="ngpassword" required minlength="6" #password="ngModel">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)"> 
+                    <div *ngIf="password.errors.required"> 
+                        <p>Password required!</p>
+                    </div>
+                    <div *ngIf="password.errors.minlength!=6"> 
+                        <p>Password must equal or more than six letters!</p>
+                    </div>	
+                </div>
+               <br><br>
+             <button [disabled]="!sampleForm.form.valid" class="submit">Submit</button>
+            </form>
+         </div>
+     </div>
+ </div>
+<app-child-template-register-app  (edit)="editInfo($event)" [registered]="regInfos"></app-child-template-register-app>
+ <app-httchild></app-httchild>
+<!-- <app-child-template-register-app  (edit)="editInfo($event)" [registered]="regInfos"></app-child-template-register-app> -->
